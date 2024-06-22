@@ -19,7 +19,7 @@ Gpu_CUDA_AES
 
 `Explore in the documentation » <https://peluqueriamael.com/docs>`_
 
-`Report bug <https://github.com/twbs/bootstrap/issues/new?assignees=-&labels=bug&template=bug_report.yml>`_ · `Request feature <https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml>`_ · `Themes <https://themes.getbootstrap.com/>`_
+`Report bug <https://github.com/HarryEddward/gpu_cuda_aes/issues>`_ · `Request feature <https://github.com/twbs/bootstrap/issues/new?assignees=&labels=feature&template=feature_request.yml>`_ · `Themes <https://themes.getbootstrap.com/>`_
 
 .. image:: https://img.shields.io/pypi/dm/to_literal
   :alt: PyPI - Downloads

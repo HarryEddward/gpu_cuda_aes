@@ -57,3 +57,27 @@ It can't get any simpler, impossible!
     text_decrypted = gpu.decrypt('encripted_text')
 
 
+
+
+.. image:: https://pypi-camo.freetls.fastly.net/36f397b09a7781d43d862d849361e2e6ae718ca6/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f39663431306239623365363937333832303965366131343163636137623339653f73697a653d313430
+   :alt: Gravatar
+   :width: 120px
+   :height: 120px
+
+Créditos
+---------
+
+.. role:: separators
+
+Links:
+* :instagram: https://www.instagram.com/__adrian__martin__
+* :pypi: https://pypi.org/user/AdriaMartin/
+* :profile: https://gravatar.com/au7812ooae32
+* :github: https://github.com/HarryEddward/to_literal
+
+Rolos:
+* **Desarrollador frontend**
+* **Desarrollador backend**
+* **Desarrollador devops**
+* **Instalador**
+* **Configurador**

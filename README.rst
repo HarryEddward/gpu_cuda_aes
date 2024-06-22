@@ -11,7 +11,4 @@ These are the authors of the code made with CUDA and AES part: (github: aranscha
 I have a lot of respect for the people who made all this possible, go support them
 
 
-.. code::
-   :linenos:
-
-    print("Hola mundo")
+:code:`\`hello world\``

@@ -11,9 +11,9 @@ gpu_cuda_aes
    :height: 300px
    :align: center
 
-================================================================
+==============================
 **Encypt/Decypt with your** :code:`__Nvidia GPU__` **in the easy way with AES!**
-================================================================
+==============================
 
 `Explore in the documentation » <https://peluqueriamael.com/docs>`_
 

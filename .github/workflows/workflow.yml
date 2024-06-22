@@ -1,0 +1,32 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  PACKAGE_NAME: gpu_cuda_aes
+  PACKAGE_VERSION: 2.0.0
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build and test
+        run: python setup.py sdist bdist_wheel
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@v2
+        with:
+          user_token: ${{ secrets.PYPI_TOKEN }}
+          package: ${PACKAGE_NAME}-${PACKAGE_VERSION}.whl

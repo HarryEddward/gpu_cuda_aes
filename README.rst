@@ -2,7 +2,7 @@ gpu_cuda_aes
 ============
 
 
-.. image:: logotipo.png
+.. image:: assets/logotipo.png
    :width: 600px
    :height: 600px
    :align: center

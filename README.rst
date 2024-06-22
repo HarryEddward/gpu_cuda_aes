@@ -2,9 +2,9 @@ gpu_cuda_aes
 ============
 
 
-.. image:: https://github.com/HarryEddward/gpu_cuda_aes/tree/main/assets/logo.png
-   :width: 300px
-   :height: 300px
+.. image:: assets/logos.png
+   :width: 600px
+   :height: 600px
    :align: center
 
 ================================================================

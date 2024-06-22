@@ -7,8 +7,8 @@ gpu_cuda_aes
    <div align="center">
 
 .. image:: assets/logotipo.png
-   :width: 300px
-   :height: 300px
+   :width: 400px
+   :height: 400px
    :align: center
 
 ==============================

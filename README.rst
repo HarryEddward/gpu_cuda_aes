@@ -1,5 +1,9 @@
-# gpu_cuda_aes
-Encypt/Decypt with your Nvidia GPU in the easy way with AES!
+gpu_cuda_aes
+============
+
+================================================================
+**Encypt/Decypt with your Nvidia GPU in the easy way with AES!**
+================================================================
 
 Forget to implement in the hard way other code to encrypt with this lib. Avoid to do an implementations to your code!
 These are the authors of the code made with CUDA and AES part: (github: aranscha) Alexander Ranschaert

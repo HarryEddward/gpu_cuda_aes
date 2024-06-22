@@ -1,4 +1,4 @@
-Gpu_CUDA_AES
+GPU_CUDA_AES
 ============
  *Avoid writing extra code, just use it*
 ============

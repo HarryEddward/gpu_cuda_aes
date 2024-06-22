@@ -43,6 +43,9 @@ These are the authors of the code made with CUDA and AES part: :code:`(github: a
 I have a lot of respect for the people who made all this possible, go support them
 
 
+It can't get any simpler, impossible!
+----------
+
 .. code:: python
 
     from gpu_cuda_aes.v2.AES import CryptoGPU

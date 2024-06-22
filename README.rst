@@ -12,7 +12,7 @@ gpu_cuda_aes
    :align: center
 
 ==============================
-**Encypt/Decypt with your** :code:`__Nvidia GPU__` **in the easy way with AES!**
+**Encypt/Decypt with your Nvidia GPU with AES!**
 ==============================
 
 `Explore in the documentation » <https://peluqueriamael.com/docs>`_

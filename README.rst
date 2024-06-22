@@ -62,7 +62,7 @@ It can't get any simpler, impossible!
    :height: 120px
 
 Créditos
----------
+======
 
 .. role:: separators
 

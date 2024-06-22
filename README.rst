@@ -34,7 +34,8 @@ GPU_CUDA_AES
    <br>
 
 
-Forget to implement in the hard way other code to encrypt with this lib. Avoid to do an implementations to your code!
+**Forget to implement in the hard way other code to encrypt with this lib. Avoid to do an implementations to your code!**
+
 These are the authors of the code made with CUDA and AES part: :code:`(github: aranscha) Alexander Ranschaert` :code:`(github: RyanDeKoninck) RyanDeKoninck`
 
 I have a lot of respect for the people who made all this possible, go support them

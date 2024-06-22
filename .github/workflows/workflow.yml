@@ -26,7 +26,13 @@ jobs:
         run: python setup.py sdist bdist_wheel
 
       - name: Publish to PyPI
-        uses: pypa/gh-action-pypi-publish@v2
+        uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
-          user_token: ${{ secrets.PYPI_TOKEN }}
-          package: ${PACKAGE_NAME}-${PACKAGE_VERSION}.whl
+          user: __token__
+          repository-url: https://upload.pypi.org/legacy/gpu_cuda_aes
+          packages-dir: dist
+          verify-metadata: true
+          skip-existing: false
+          verbose: false
+          print-hash: false
+          package: ${PACKAGE_NAME}

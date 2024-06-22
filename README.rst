@@ -44,7 +44,7 @@ I have a lot of respect for the people who made all this possible, go support th
 
 
 It can't get any simpler, impossible!
-----------
+============
 
 .. code:: python
 

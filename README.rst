@@ -1,6 +1,6 @@
 Gpu_CUDA_AES
 ============
- *Avoid writing extra code*
+ *Avoid writing extra code, just use it*
 ============
 
 

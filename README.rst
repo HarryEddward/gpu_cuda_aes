@@ -42,3 +42,13 @@ These are the authors of the code made with CUDA and AES part: :code:`(github: a
 
 I have a lot of respect for the people who made all this possible, go support them
 
+
+.. code:: python
+
+    from src.gpu_cuda_aes.v2.AES import CryptoGPU
+
+    gpu = CryptoGPU()
+    gpu.hide_key("secret_key")
+
+    text_encrypted = gpu.encypt('plain_text')
+    text_decrypted = gpu.decrypt('encripted_text')

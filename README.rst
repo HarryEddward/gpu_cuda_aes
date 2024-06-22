@@ -62,19 +62,25 @@ It can't get any simpler, impossible!
    :height: 120px
 
 Créditos
-======
+========
 
-.. role:: separators
+.. raw:: html
 
-Links:
-* `Instagram <https://www.instagram.com/__adrian__martin__>`_
-* `PyPI <https://pypi.org/user/AdriaMartin/>`_
-* `Profile <https://gravatar.com/au7812ooae32>`_
-* `GitHub <https://github.com/HarryEddward/to_literal>`_
-
-Roles:
-* **Desarrollador frontend**
-* **Desarrollador backend**
-* **Desarrollador devops**
-* **Instalador**
-* **Configurador**
+    <p align="center">
+      <a href="https://gravatar.com/au7812ooae32">
+      <img width="120px" height="120px" src="https://pypi-camo.freetls.fastly.net/36f397b09a7781d43d862d849361e2e6ae718ca6/68747470733a2f2f7365637572652e67726176617461722e636f6d2f6176617461722f39663431306239623365363937333832303965366131343163636137623339653f73697a653d313430">
+      </a>
+    </p>
+    <p align="center">
+      <a href="https://www.instagram.com/__adrian__martin__/"><b>Instagram</b></a> ·
+      <a href="https://pypi.org/user/AdriaMartin/"><b>PyPi</b></a> ·
+      <a href="https://gravatar.com/au7812ooae32"><b>Profile</b></a> ·
+      <a href="https://github.com/HarryEddward/to_literal"><b>Github</b></a>
+    </p>
+    <p align="center">
+      <span><b>Desarrollador frontend</b></span> -
+      <span><b>Desarrollador backend</b></span> -
+      <span><b>Desarrollador devops</b></span> -
+      <span><b>Instalador</b></span> -
+      <span><b>Configurador</b></span>
+    </p>

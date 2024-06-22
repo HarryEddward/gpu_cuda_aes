@@ -1,6 +1,12 @@
 gpu_cuda_aes
 ============
 
+
+.. image:: https://github.com/HarryEddward/gpu_cuda_aes/tree/main/assets/logo.png
+   :width: 300px
+   :height: 300px
+   :align: center
+
 ================================================================
 **Encypt/Decypt with your** :code:`__Nvidia GPU__` **in the easy way with AES!**
 ================================================================

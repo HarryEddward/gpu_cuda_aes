@@ -3,8 +3,8 @@ gpu_cuda_aes
 
 
 .. image:: assets/logotipo.png
-   :width: 600px
-   :height: 600px
+   :width: 400px
+   :height: 400px
    :align: center
 
 ================================================================

@@ -2,7 +2,7 @@ gpu_cuda_aes
 ============
 
 ================================================================
-**Encypt/Decypt with your** :code:`Nvidia GPU` **in the easy way with AES!**
+**Encypt/Decypt with your** :code:`**Nvidia GPU**` **in the easy way with AES!**
 ================================================================
 
 Forget to implement in the hard way other code to encrypt with this lib. Avoid to do an implementations to your code!

@@ -2,6 +2,10 @@ gpu_cuda_aes
 ============
 
 
+.. raw:: html
+
+   <div align="center">
+   
 .. image:: assets/logotipo.png
    :width: 400px
    :height: 400px

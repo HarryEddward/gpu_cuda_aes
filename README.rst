@@ -61,7 +61,7 @@ It can't get any simpler, impossible!
 
 .sensible()
 ===========
-When you encrypt with the .sensible() method you are encrypted with SHA256 x2 and then it is encrypted with AES-128-CBC, when you decrypt it you will have the result of the previous SHA256 without spending processing because SHA is not decrypted, AES is!
+When you encrypt with the .sensible() method you are encrypted with SHA256 x2 and then it is encrypted with AES-128-CBC, when you decrypt it you will have the result of the previous SHA256 without spending processing because SHA is not decrypted, AES is! **Remember that SHA256 encrypts by CPU and AES by GPU CUDA**
 
 Créditos
 ========

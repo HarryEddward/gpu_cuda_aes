@@ -436,7 +436,6 @@ class CryptoGPU:
         try:
             decrypted_str = bytes(decrypted).decode().rstrip('\x00')  # Removing potential padding
         except Exception:
-            print('fue mal:')
             decrypted_str = bytes(decrypted).hex()
         return decrypted_str
 

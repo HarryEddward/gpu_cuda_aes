@@ -53,7 +53,7 @@ It can't get any simpler, impossible!
     gpu = CryptoGPU()
     gpu.hide_key("secret_key")
 
-    text_encrypted = gpu.encypt.aes('plain_text') #Cryptography (AES)
+    text_encrypted = gpu.encypt.aes('plain_text') #Cryptography (AES (GPU))
     text_encrypted_sensible = gpu.encypt.sensible('plain_text') #Cryptography (HSA256x2 (CPU) + AES (GPU))
 
     text_decrypted = gpu.decrypt('encripted_text')

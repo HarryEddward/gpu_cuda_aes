@@ -14,7 +14,7 @@ GPU_CUDA_AES
    :align: center
 
 ==============================
-**Encypt/Decypt** :code:`High Performant` **with your Nvidia GPU with AES!**
+**Encypt/Decypt with your Nvidia GPU with** :code:`High Performant` **AES!**
 ==============================
 
 `Explore in the documentation » <https://peluqueriamael.com/docs>`_

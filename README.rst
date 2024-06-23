@@ -1,4 +1,4 @@
-GPU_CUDA_AES (Easy to use, High Performant)
+GPU_CUDA_AES 
 ============
  *Avoid writing extra code, just use it*
 ============
@@ -14,7 +14,7 @@ GPU_CUDA_AES (Easy to use, High Performant)
    :align: center
 
 ==============================
-**Encypt/Decypt with your Nvidia GPU with AES!**
+**Encypt/Decypt (Easy to use, High Performant)**
 ==============================
 
 `Explore in the documentation » <https://peluqueriamael.com/docs>`_

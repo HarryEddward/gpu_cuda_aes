@@ -289,12 +289,6 @@ class CryptoGPU:
         self.byte_key = bytes.fromhex(self.hex_key)
         self.byte_array_key = np.frombuffer(self.byte_key, dtype=np.byte)
 
-        main_pth = os.path.dirname(os.path.abspath(__file__))
-        cuda_module = SourceModule(open(main_pth + '/hashes/sha256/kernel/sha256.cu', 'r').read())
-        
-        # Obtener la función CUDA compilada
-        self.sha256_hash_cuda = cuda_module.get_function("sha256_hash_cuda")
-
 
 
     class utils:
@@ -360,12 +354,15 @@ class CryptoGPU:
     
     class encrypt:
             
-
-        def sensible(self, input: np.bytes_="") -> np.string_:
+        @classmethod
+        def sensible(cls, input: np.bytes_="") -> np.string_:
             
             """
             Encripta por medio de CUDA a través de la GPU Nvidia a traves de una doble
-            encritpación por SHA256 como capa de seguridad contra información muy sensible
+            encritpación por SHA256 como capa de seguridad contra información muy sensible.
+            
+            El hasheo por **HSA256 es por CPU**, mientras el **AES es por GPU**,
+            Aprendere C++ y CUDA para solventar el hasheo por GPU en un futuro próximo!
 
             Args:
                 input (str): Entrada de texto a encriptar
@@ -390,8 +387,9 @@ class CryptoGPU:
             encrypted_hex = bytes(encrypted).hex()
             print('-------> input_bytes', input_bytes.hex())
             return encrypted_hex
-    
-        def aes():
+
+        @classmethod
+        def aes(cls, input: np.bytes_="") -> np.string_:
             """
             Encripta por medio de CUDA a través de la GPU Nvidia con solo AES
 
@@ -435,7 +433,11 @@ class CryptoGPU:
         computer = AES()
         decrypted = computer.decrypt_gpu(byte_array_in, self.byte_array_key, byte_array_in.size)
         print(bytes(decrypted))
-        decrypted_str = bytes(decrypted).hex()#.rstrip('\x00')  # Removing potential padding
+        try:
+            decrypted_str = bytes(decrypted).decode().rstrip('\x00')  # Removing potential padding
+        except Exception:
+            print('fue mal:')
+            decrypted_str = bytes(decrypted).hex()
         return decrypted_str
 
 
@@ -450,7 +452,10 @@ if __name__ == '__main__':
     gpu.utils.double_encryption(test_text)
 
     en_text_sensible = gpu.encrypt.sensible(test_text)
-    print('------>', en_text_sensible)
+    print('------>', en_text_sensible, '<-------')
+
+    de_text = gpu.decrypt(en_text_sensible)
+    print('------>', de_text,  '<-------')
 
     en_text = gpu.encrypt.aes(test_text)
     print('------>', en_text)

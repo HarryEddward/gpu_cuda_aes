@@ -365,7 +365,7 @@ class CryptoGPU:
             Aprendere C++ y CUDA para solventar el hasheo por GPU en un futuro próximo!
 
             Args:
-                input (str): Entrada de texto a encriptar
+                input (str | bytes): Entrada de texto a encriptar
             
             Result:
                 str: Texto encriptado por string
@@ -394,7 +394,7 @@ class CryptoGPU:
             Encripta por medio de CUDA a través de la GPU Nvidia con solo AES
 
             Args:
-                input (str): Entrada de texto a encriptar
+                input (str | bytes): Entrada de texto a encriptar
             
             Result:
                 str: Texto encriptado por string

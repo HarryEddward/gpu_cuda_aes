@@ -63,8 +63,8 @@ Who is this python library made for?
 ====================================
 
 - Dedicated small-medium web servers to scale
-- Quick implementation of the gpu in encryption in Python
-- Startups
+- Fast implementation/High gpu performance in Python encryption
+- Technological Startups
 
 encypt. :code:`sensible()`
 ===========

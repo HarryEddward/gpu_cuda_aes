@@ -72,7 +72,7 @@ Standard function when using the library when encrypting, it is fast and secure 
 .hide_key()
 ===========
 The secret encryption key is added as a parameter, the function will verify its use and add it to the environment variable.
-In production environments it will simply be when configuring the library, add the variable **EASY_CRYPTO_CUDA_GPU_CRYPTO_GPU**
+In production environments it will simply be when configuring the library, add the os variable **EASY_CRYPTO_CUDA_GPU_CRYPTO_GPU**
 
 
 Créditos

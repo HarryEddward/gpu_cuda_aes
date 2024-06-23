@@ -278,16 +278,54 @@ class AES:
         return res
 
 
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.backends import default_backend
 class CryptoGPU:
 
-    def __init__(self, key: str) -> None:
+    def __init__(self, key: str = "") -> None:
         
         # Get random key
-        hex_key = "000102030405060708090a0b0c0d0e0f"
-        byte_key = bytes.fromhex(hex_key)
-        self.byte_array_key = np.frombuffer(byte_key, dtype=np.byte)
+        self.hex_key = "000102030405060708090a0b0c0d0e0f"
+        self.byte_key = bytes.fromhex(self.hex_key)
+        self.byte_array_key = np.frombuffer(self.byte_key, dtype=np.byte)
 
-    def hidde_key(self, secret: str) -> None:
+        main_pth = os.path.dirname(os.path.abspath(__file__))
+        cuda_module = SourceModule(open(main_pth + '/hashes/sha256/kernel/sha256.cu', 'r').read())
+        
+        # Obtener la función CUDA compilada
+        self.sha256_hash_cuda = cuda_module.get_function("sha256_hash_cuda")
+
+
+
+    class utils:
+        
+        def double_encryption(text: str) -> bytes:
+
+            """
+            Encripta con HSA256 x 2, añadiendo una capa de seguridad contra información
+            sensible
+            """
+
+            backend = default_backend()
+
+            digest = hashes.Hash(hashes.SHA256(), backend)
+            digest.update(text.encode())
+            frist_hash_bytes = digest.finalize()
+            print(f"1r: SHA-256: {frist_hash_bytes.hex()}")
+
+            digest = hashes.Hash(hashes.SHA256(), backend)
+            digest.update(frist_hash_bytes)
+            second_hash_bytes = digest.finalize()
+            print(f"2n: SHA-256: {second_hash_bytes.hex()}")
+
+            return second_hash_bytes
+
+
+    def obtain_key(self) -> bytes:
+        print('-------->', self.byte_array_key)
+        return self.byte_array_key
+
+    def hide_key(self, secret: str) -> None:
         """
         Esconde la llave en la variable de entorno, para luego en úso de producción
         tener una misma llave especifica para integrar sin hacer mas verboso el código.
@@ -319,28 +357,65 @@ class CryptoGPU:
             raise SystemError("Hubo un error fatal al implementar y a verificar la clave de encriptación")
         
         pass
-
-    def encrypt(self, input: str) -> str:
-
-        """
-        Encripta por medio de CUDA a través de la GPU Nvidia
-
-        Args:
-            input (str): Entrada de texto a encriptar
-        
-        Result:
-            str: Texto encriptado por string
-        """
-
-        input_bytes = input.encode('utf-8')
-        byte_array_in = np.frombuffer(input_bytes, dtype=np.byte)
-
-        computer = AES()
-        
-        encrypted = computer.encrypt_gpu(byte_array_in, self.byte_array_key, byte_array_in.size)
-        encrypted_hex = bytes(encrypted).hex()
-        return encrypted_hex
     
+    class encrypt:
+            
+
+        def sensible(self, input: np.bytes_="") -> np.string_:
+            
+            """
+            Encripta por medio de CUDA a través de la GPU Nvidia a traves de una doble
+            encritpación por SHA256 como capa de seguridad contra información muy sensible
+
+            Args:
+                input (str): Entrada de texto a encriptar
+            
+            Result:
+                str: Texto encriptado por string
+            """
+            gpu = CryptoGPU()
+
+            if isinstance(input, bytes):
+                input_bytes = gpu.utils.double_encryption(input.encode())
+            elif isinstance(input, str):
+                input_bytes = gpu.utils.double_encryption(input)
+            
+
+            byte_array_key = gpu.obtain_key()
+            byte_array_in = np.frombuffer(input_bytes, dtype=np.byte)
+
+            computer = AES()
+            
+            encrypted = computer.encrypt_gpu(byte_array_in, byte_array_key, byte_array_in.size)
+            encrypted_hex = bytes(encrypted).hex()
+            print('-------> input_bytes', input_bytes.hex())
+            return encrypted_hex
+    
+        def aes():
+            """
+            Encripta por medio de CUDA a través de la GPU Nvidia con solo AES
+
+            Args:
+                input (str): Entrada de texto a encriptar
+            
+            Result:
+                str: Texto encriptado por string
+            """
+            gpu = CryptoGPU()
+
+            if not isinstance(input, bytes):
+                input_bytes = input.encode()
+            
+
+            byte_array_key = gpu.obtain_key()
+            byte_array_in = np.frombuffer(input_bytes, dtype=np.byte)
+
+            computer = AES()
+            
+            encrypted = computer.encrypt_gpu(byte_array_in, byte_array_key, byte_array_in.size)
+            encrypted_hex = bytes(encrypted).hex()
+            print('-------> input_bytes', input_bytes.hex())
+            return encrypted_hex
 
     def decrypt(self, encrypted_hex: str) -> str:
 
@@ -359,6 +434,95 @@ class CryptoGPU:
 
         computer = AES()
         decrypted = computer.decrypt_gpu(byte_array_in, self.byte_array_key, byte_array_in.size)
-        
-        decrypted_str = bytes(decrypted).decode('utf-8').rstrip('\x00')  # Removing potential padding
+        print(bytes(decrypted))
+        decrypted_str = bytes(decrypted).hex()#.rstrip('\x00')  # Removing potential padding
         return decrypted_str
+
+
+
+main_pth = os.path.dirname(os.path.abspath(__file__))
+cuda_module = SourceModule(open(main_pth + '/hashes/sha256/kernel/sha256.cu', 'r').read())
+        
+        # Obtener la función CUDA compilada
+sha256_hash_cuda = cuda_module.get_function("sha256_hash_cuda")
+
+
+
+BLOCK_SIZE = 64
+
+# Definición del kernel CUDA en forma de string
+cuda_code = """
+#include <openssl/sha.h>
+
+__global__ void sha256_kernel(unsigned char *data, unsigned int *digest) {
+    int idx = threadIdx.x + blockIdx.x * blockDim.x;
+    
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256_CTX sha256;
+    SHA256_Init(&sha256);
+    SHA256_Update(&sha256, data + idx * BLOCK_SIZE, BLOCK_SIZE);
+    SHA256_Final(hash, &sha256);
+    
+    // Convertir el hash a un unsigned int para almacenarlo en el resultado
+    unsigned int *hash_int = (unsigned int *)hash;
+    digest[idx * 8 + 0] = hash_int[0];
+    digest[idx * 8 + 1] = hash_int[1];
+    digest[idx * 8 + 2] = hash_int[2];
+    digest[idx * 8 + 3] = hash_int[3];
+    digest[idx * 8 + 4] = hash_int[4];
+    digest[idx * 8 + 5] = hash_int[5];
+    digest[idx * 8 + 6] = hash_int[6];
+    digest[idx * 8 + 7] = hash_int[7];
+}
+"""
+
+# Compilar el kernel CUDA
+mod = SourceModule(cuda_code)
+
+# Obtener la función del kernel compilado
+sha256_kernel = mod.get_function("sha256_kernel")
+
+def sha256_cuda(data):
+    data_size = len(data)
+    num_blocks = (data_size + BLOCK_SIZE - 1) // BLOCK_SIZE
+    
+    # Convertir data a un array de bytes
+    data_bytes = bytearray(data.encode())
+    data_gpu = cuda.to_device(data_bytes)
+    
+    # Reservar memoria para el resultado en la GPU
+    digest_gpu = cuda.mem_alloc(num_blocks * 8 * 4)  # 8 unsigned int por bloque
+    
+    # Llamar al kernel CUDA
+    sha256_kernel(data_gpu, digest_gpu, block=(1, 1, 1), grid=(num_blocks, 1))
+    
+    # Copiar el resultado de vuelta desde la GPU
+    digest = bytearray(num_blocks * 8 * 4)
+    cuda.memcpy_dtoh(digest, digest_gpu)
+    
+    # Convertir el resultado a hexadecimal
+    hex_digest = ""
+    for i in range(num_blocks * 8):
+        hex_digest += format(digest[i * 4] | (digest[i * 4 + 1] << 8) | (digest[i * 4 + 2] << 16) | (digest[i * 4 + 3] << 24), "08x")
+    
+    return hex_digest
+
+if __name__ == '__main__':
+    
+    '''gpu = CryptoGPU()
+    test_text = "test_hola"
+
+    gpu.utils.double_encryption(test_text)
+
+    en_text_sensible = gpu.encrypt.sensible(test_text)
+    print('------>', en_text_sensible)
+
+    en_text = gpu.encrypt.aes(test_text)
+    print('------>', en_text)
+    
+    de_text = gpu.decrypt(en_text)
+    print('------>', de_text)'''
+
+    message = "Mensaje secreto"
+    encrypted_message = sha256_cuda(message)
+    print(f"Mensaje encriptado SHA-256: {encrypted_message}")

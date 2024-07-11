@@ -16,7 +16,7 @@ GPU_CUDA_AES
 .. role:: red-text(raw)
    :format: html
 
-Este es un texto en color |red-text:`rojo`.
+Este es un texto en color | red-text:`rojo`.
 
 
 

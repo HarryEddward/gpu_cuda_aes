@@ -34,8 +34,9 @@ GPU_CUDA_AES
    <br>
    <br>
 
-=====================
+
 PROBLEMAS
+=====================
 ___________
 
 **Forget to implement in the hard way other code to encrypt with this lib. Avoid to do an implementations to your code!**

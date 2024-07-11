@@ -13,12 +13,6 @@ GPU_CUDA_AES
    :height: 400px
    :align: center
 
-.. role:: red-text(raw)
-   :format: html
-
-.. red-text:`rojo`.
-
-
 
 ==============================
 **Encypt/Decypt (Easy to use, High Performant)**

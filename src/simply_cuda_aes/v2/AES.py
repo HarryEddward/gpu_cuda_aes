@@ -285,7 +285,7 @@ class CryptoGPU:
     def __init__(self, key: str = "") -> None:
         
         # Get random key
-        self.hex_key = "000102030405060708090a0b0c0d0e0f"
+        self.hex_key = "E3A9C2F8B1D4E6F7A8B9C0D1E2F3A4B5"
         self.byte_key = bytes.fromhex(self.hex_key)
         self.byte_array_key = np.frombuffer(self.byte_key, dtype=np.byte)
 
@@ -340,10 +340,11 @@ class CryptoGPU:
         """
         try:
             os.environ['EASY_CRYPTO_CUDA_GPU_CRYPTO_GPU'] = str(secret)
+            print(os.getenv('NOMBRE_VARIABLE'))
 
             try:
-                test_encrypt = self.encrypt('test')
-                test_decypt = self.decrypt(test_encrypt)
+                test_encrypt = self.encrypt.aes('test')
+                self.decrypt(test_encrypt)
             except Exception:
                 raise ValueError("La clave no es valida para el úso")
 

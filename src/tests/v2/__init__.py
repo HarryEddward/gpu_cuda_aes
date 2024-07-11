@@ -1,5 +1,5 @@
 import pytest
-from src.gpu_cuda_aes.v2.AES import CryptoGPU
+from src.simply_cuda_aes.v2.AES import CryptoGPU
 
 def test_mount_instance():
     global gpu
@@ -12,7 +12,7 @@ def test_hide_key():
 def test_encrypt_sensible():
     global gpu
     global text_encripted
-    text_encripted = gpu.encrypt("Hola este es un mensaje de testeo")
+    text_encripted = gpu.encrypt.sensible("Hola este es un mensaje de testeo")
     print(text_encripted)
 
     assert isinstance(text_encripted, str)
@@ -20,7 +20,7 @@ def test_encrypt_sensible():
 def test_encrypt_aes():
     global gpu
     global text_encripted
-    text_encripted = gpu.encrypt("Hola este es un mensaje de testeo")
+    text_encripted = gpu.encrypt.aes("Hola este es un mensaje de testeo")
     print(text_encripted)
 
     assert isinstance(text_encripted, str)

@@ -38,6 +38,7 @@ GPU_CUDA_AES
 PROBLEMS:
 =====================
 The library is not yet published, it can be used from a copy of the directory :code:`src/simply_cuda_aes`
+The main content is in AES.py
 
 ___________
 

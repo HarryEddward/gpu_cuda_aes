@@ -81,7 +81,7 @@ encypt. :code:`aes()`
 Standard function when using the library when encrypting, it is fast and secure enough for transmissions with not so delicate data.
 
 
-.hide_key()
+. :code:`hide_key()`
 ===========
 The secret encryption key is added as a parameter, the function will verify its use and add it to the environment variable.
 In production environments it will simply be when configuring the library, add the os variable **EASY_CRYPTO_CUDA_GPU_CRYPTO_GPU**. Avoiding non-verbose code in production and development.

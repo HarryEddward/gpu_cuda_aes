@@ -35,8 +35,9 @@ GPU_CUDA_AES
    <br>
 
 
-PROBLEMAS
+PROBLEMS:
 =====================
+The library is not yet published, it can be used from a copy of the directory: `src/simply_cuda_aes`
 ___________
 
 **Forget to implement in the hard way other code to encrypt with this lib. Avoid to do an implementations to your code!**
